@@ -1,38 +1,323 @@
-.App {
-  text-align: center;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 
+==============================
+	        Grid
+==============================
+*/
+
+*befor,
+*after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  display: block;
+  background: white;
+  font-family: "Nunito Sans", sans-serif;
+  line-height: 1.7;
+  font-size: 24px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* 
+==============================
+	      main styles
+==============================
+*/
+
+.app {
+  width: 70%;
+  margin: 0 auto;
+}
+
+@media (max-width: 762px) {
+    .app {
+        width: 80%;
+    }
+}
+
+h2 {
+  font-size: 45px;
+  font-weight: 700;
+}
+
+hr {
+  width: 100%;
+  border-bottom: 1px rgb(232, 232, 232);
+  opacity: 0.25;
+}
+
+/* 
+==============================
+            form
+==============================
+*/
+
+.form {
+  border-radius: 15px;
+  background: rgb(245, 245, 245);
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  margin: 70px 0;
+}
+
+.search-bar {
+  width: 80%;
+  border-radius: 15px;
+  background: rgb(245, 245, 245);
+  border: 0;
+  outline: 0;
+  padding: 25px;
+  font-size: 24px;
+}
+
+.search-btn {
+  width: 10%;
+  background: rgb(245, 245, 245);
+  border-radius: 15px;
+  border: 0;
+  outline: 0;
+}
+
+.pronounciation {
+  background: white;
+  border: 0;
+  outline: 0;
+}
+
+.pronounciation svg {
+  transition: width 0.5s;
+}
+
+
+/* 
+==============================
+         definition
+==============================
+*/
+
+.def-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.phonetic {
+  color: darkviolet;
 }
 
-@keyframes App-logo-spin {
+.part-of-speech {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.part-of-speech h3 {
+  font-weight: 700;
+  font-size: 28px;
+}
+
+h5 {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 2.4rem;
+  color: rgb(117, 117, 117);
+}
+
+.definition {
+  list-style: disc;
+}
+
+.definition::marker {
+  color: darkviolet;
+}
+
+.definitions {
+  margin-bottom: 50px;
+}
+
+.defs-container {
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+#loading {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #9c41f2;
+  border-radius: 100%;
+  margin: auto;
+  display: block;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.synonyms,
+.antonyms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.word-not-found h2 {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.emojie {
+  text-align: center;
+  font-size: 3.5rem;
+  animation: rotator 2s;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0);
   }
 }
